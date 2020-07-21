@@ -17,6 +17,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image  as mpimg
 from keras import regularizers
+import cv2
 
 print(len(os.listdir("Chest_COVID")))
 print(len(os.listdir("Chest_NonCOVID")))
@@ -120,6 +121,7 @@ history = model.fit_generator(train_generator,
                               verbose=1,
                               validation_data=validation_generator)
 
+
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
 loss = history.history['loss']
@@ -140,3 +142,4 @@ plt.legend()
 
 plt.show()
 
+model.save('mask_trained2.h5') 
